@@ -1,14 +1,13 @@
-﻿
-using BoxOfficeGuesser.Stores;
+﻿using BoxOfficeGuesser.Stores;
 
 namespace BoxOfficeGuesser.ViewModel;
 
 public class MainViewModel : ViewModelBase
 {
     public ViewModelBase CurrentViewModel => navigationStore.CurrentViewModel!;
-    
-    private readonly NavigationStore navigationStore;
 
+    private readonly NavigationStore navigationStore;
+ 
     public MainViewModel(NavigationStore navigationStore)
     {
         this.navigationStore = navigationStore;

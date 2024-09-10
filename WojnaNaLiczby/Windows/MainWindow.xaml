@@ -7,7 +7,8 @@
         xmlns:views="clr-namespace:BoxOfficeGuesser.View"
         xmlns:vms="clr-namespace:BoxOfficeGuesser.ViewModel"
         mc:Ignorable="d"
-        Title="Wojna na liczby" Height="220" Width="450">
+        d:DataContext="{d:DesignInstance Type=vms:MainViewModel}"
+        Title="Wojna na liczby">
     <Grid>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vms:GameCreationViewModel}">

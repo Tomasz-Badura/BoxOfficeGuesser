@@ -35,6 +35,15 @@ public class ComparisonConverter : IValueConverter
 
 public partial class GameCreationViewModel : ViewModelBase
 {
+    public override WindowOptions WindowOptions { get; protected set; } = new()
+    {
+        minWidth = 1000,
+        minHeight = 1000,
+        defaultHeight = 1200,
+        defaultWidth = 1200,
+        resizeMode = System.Windows.ResizeMode.CanResizeWithGrip
+    };
+
     public GameCreationViewModel(NavigationStore navigationStore, StartGameCommandFactory startGameCommandFactory)
     {
         NavigateToHighscoresViewButtonClick = new(navigationStore);

@@ -42,6 +42,7 @@ public partial class App : Application
                 {
                     return new(vmType => (ViewModelBase) sp.GetRequiredService(vmType));
                 });
+
                 _ = services.AddSingleton<MovieStore>(sp =>
                 {
                     string filePath = config["MovieFilePath"] ?? throw new ConfigurationErrorsException($"Missing movies csv file path in '{appSettingsFilePath}'");
@@ -64,7 +65,9 @@ public partial class App : Application
         await AppHost.StartAsync();
         MainWindow startWindow = AppHost.Services.GetRequiredService<MainWindow>();
         startWindow.DataContext = AppHost.Services.GetRequiredService<MainViewModel>();
-        AppHost.Services.GetRequiredService<NavigationStore>().NavigateTo<GameCreationViewModel>();
+        NavigationStore navigationStore = AppHost.Services.GetRequiredService<NavigationStore>();
+        navigationStore.WindowTarget = startWindow;
+        navigationStore.NavigateTo<GameCreationViewModel>();
         startWindow.Show();
         
         base.OnStartup(e);
