@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-using BoxOfficeGuesser.ViewModel;
+using BoxOfficeGuesser.Model;
 
 namespace BoxOfficeGuesser.EntityModels;
 

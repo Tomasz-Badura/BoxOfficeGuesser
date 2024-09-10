@@ -94,12 +94,6 @@ public class Game
         }
 
         Player player = players[CurrentPlayer];
-        while(player.lifes <= 0)
-        {
-            CurrentPlayer = (CurrentPlayer + 1) % players.Length;
-            player = players[CurrentPlayer];
-        }
-
         bool result = guess switch
         {
             Guess.LessThan => CurrentMovie.boxOfficeIncome < ComparedToMovie.boxOfficeIncome,
@@ -116,7 +110,13 @@ public class Game
 
         CurrentMovie = ComparedToMovie;
         ComparedToMovie = GetNextRandomMovie();
-        CurrentPlayer = (CurrentPlayer + 1) % players.Length;
+
+        do
+        {
+            CurrentPlayer = (CurrentPlayer + 1) % players.Length;
+            player = players[CurrentPlayer];
+        }
+        while(player.lifes <= 0 && GameEnded == false);
 
         return result;
     }

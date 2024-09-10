@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Data;
 
-using BoxOfficeGuesser.EntityModels;
+using BoxOfficeGuesser.Model;
 using BoxOfficeGuesser.Stores;
 using BoxOfficeGuesser.ViewModel.Commands;
 
@@ -73,6 +73,4 @@ public class HighscoresViewModel : ViewModelBase
             _ => throw new NotImplementedException()
         };
     }
-
-    //IEnumerable<IGrouping<GameDifficultyDisplay, Score>> grouped = highscoresStore.GetHighscores().GroupBy(x => x.GameDifficultyDisplay);
 }

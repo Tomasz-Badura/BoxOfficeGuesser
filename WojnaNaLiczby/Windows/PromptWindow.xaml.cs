@@ -46,16 +46,19 @@ public partial class PromptWindow : Window
     public async static Task<PromptWindowEventArgs> OpenPromptWindow(Window? parent = null, string? promptMessage = null, Func<string, bool>? validator = null, PromptValidatorType validatorType = PromptValidatorType.Result)
     {
         PromptWindow promptWindow = new(promptMessage, validator, validatorType);
+        TaskCompletionSource<PromptWindowEventArgs> tcs = new();
+        EventHandler<PromptWindowEventArgs> onWindowClosed = (_, result) => tcs.SetResult(result);
+        
         if(parent is not null)
         {
             parent.Closed += (_, _) =>
             {
+                promptWindow.WindowClosed -= onWindowClosed;
                 promptWindow.CloseWindow(PromptWindowResult.Cancel);
             };
         }
 
-        TaskCompletionSource<PromptWindowEventArgs> tcs = new();
-        promptWindow.WindowClosed += (_, result) => tcs.SetResult(result);
+        promptWindow.WindowClosed += onWindowClosed;
         promptWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         promptWindow.Show();
         promptWindow.FocusTextBox();

@@ -1,5 +1,5 @@
 ﻿using BoxOfficeGuesser.ViewModel;
-namespace BoxOfficeGuesser.EntityModels;
+namespace BoxOfficeGuesser.Model;
 
 public class Score
 {

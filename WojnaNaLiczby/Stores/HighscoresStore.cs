@@ -1,4 +1,5 @@
 ﻿using BoxOfficeGuesser.EntityModels;
+using BoxOfficeGuesser.Model;
 
 namespace BoxOfficeGuesser.Stores;
 
