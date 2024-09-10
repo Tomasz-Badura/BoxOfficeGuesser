@@ -45,7 +45,16 @@ public class GameViewModel : ViewModelBase
         GreaterThanButtonClick.Executed += OnGuess;
     }
 
-    public void OnGuess()
+	public override WindowOptions WindowOptions { get; protected set; } = new()
+	{
+		minWidth = 1000,
+		minHeight = 600,
+		defaultWidth = 1000,
+		defaultHeight = 600,
+		resizeMode = System.Windows.ResizeMode.CanResizeWithGrip
+	};
+
+	public void OnGuess()
     {
         if(game.GameEnded == true)
         {
@@ -73,7 +82,7 @@ public class GameViewModel : ViewModelBase
                 _ = sb.AppendLine($"Player {player.username}{winnerStr}achieved: {player.points} point" + (player.points > 1 ? "s" : ""));
             }
 
-            _ = MessageBox.Show(sb.ToString(), "Koniec gry!", MessageBoxButton.OK, MessageBoxImage.Information);
+            _ = MessageBox.Show(sb.ToString(), "Game has ended!", MessageBoxButton.OK, MessageBoxImage.Information);
             navigationStore.NavigateTo<GameCreationViewModel>();
             return;
         }

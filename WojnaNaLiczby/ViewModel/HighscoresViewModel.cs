@@ -30,7 +30,16 @@ public class HighscoresViewModel : ViewModelBase
         }
     }
 
-    public SwitchHighscoreViewCommand EasyScoresButtonClick { get; }
+	public override WindowOptions WindowOptions { get; protected set; } = new()
+	{
+		minWidth = 700,
+		minHeight = 300,
+		defaultWidth = 700,
+		defaultHeight = 300,
+		resizeMode = System.Windows.ResizeMode.NoResize
+	};
+
+	public SwitchHighscoreViewCommand EasyScoresButtonClick { get; }
     public SwitchHighscoreViewCommand MediumScoresButtonClick { get; }
     public SwitchHighscoreViewCommand HardScoresButtonClick { get; }
     public SwitchHighscoreViewCommand AllScoresButtonClick { get; }

@@ -37,11 +37,11 @@ public partial class GameCreationViewModel : ViewModelBase
 {
     public override WindowOptions WindowOptions { get; protected set; } = new()
     {
-        minWidth = 1000,
-        minHeight = 1000,
-        defaultHeight = 1200,
-        defaultWidth = 1200,
-        resizeMode = System.Windows.ResizeMode.CanResizeWithGrip
+        minWidth = 400,
+        minHeight = 200,
+        defaultWidth = 400,
+        defaultHeight = 200,
+        resizeMode = System.Windows.ResizeMode.NoResize
     };
 
     public GameCreationViewModel(NavigationStore navigationStore, StartGameCommandFactory startGameCommandFactory)

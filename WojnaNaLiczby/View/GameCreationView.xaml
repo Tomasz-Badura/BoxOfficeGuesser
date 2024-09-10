@@ -26,8 +26,8 @@
                     <Setter Property="Margin" Value="0,10,0,0"/>
                 </Style>
             </StackPanel.Resources>
-            <TextBlock FontSize="14" HorizontalAlignment="Right">Ilość Graczy:</TextBlock>
-            <TextBlock FontSize="14" HorizontalAlignment="Right">Ilość żyć:</TextBlock>
+            <TextBlock FontSize="14" HorizontalAlignment="Right">Game Mode:</TextBlock>
+            <TextBlock FontSize="14" HorizontalAlignment="Right">Difficulty:</TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Column="2" >
@@ -44,19 +44,19 @@
             </StackPanel.Resources>
 
             <StackPanel Orientation="Horizontal">
-                <RadioButton IsChecked="{Binding Path=PlayerCount, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GamePlayerCount.One}}" GroupName="PlayerCount">Jeden gracz</RadioButton>
-                <RadioButton IsChecked="{Binding Path=PlayerCount, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GamePlayerCount.Two}}" GroupName="PlayerCount">Dwóch graczy</RadioButton>
+                <RadioButton IsChecked="{Binding Path=PlayerCount, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GamePlayerCount.One}}" GroupName="PlayerCount">Single Player</RadioButton>
+                <RadioButton IsChecked="{Binding Path=PlayerCount, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GamePlayerCount.Two}}" GroupName="PlayerCount">Multi Player</RadioButton>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <RadioButton IsChecked="{Binding Path=GameDifficulty, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GameDifficulty.Easy}}" GroupName="PlayerLifes">Łatwy</RadioButton>
-                <RadioButton IsChecked="{Binding Path=GameDifficulty, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GameDifficulty.Medium}}" GroupName="PlayerLifes">Średni</RadioButton>
-                <RadioButton IsChecked="{Binding Path=GameDifficulty, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GameDifficulty.Hard}}" GroupName="PlayerLifes">Trudny</RadioButton>
+                <RadioButton IsChecked="{Binding Path=GameDifficulty, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GameDifficulty.Easy}}" GroupName="PlayerLifes">Easy</RadioButton>
+                <RadioButton IsChecked="{Binding Path=GameDifficulty, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GameDifficulty.Medium}}" GroupName="PlayerLifes">Medium</RadioButton>
+                <RadioButton IsChecked="{Binding Path=GameDifficulty, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static vms:GameDifficulty.Hard}}" GroupName="PlayerLifes">Hard</RadioButton>
             </StackPanel>
 
             <Button Command="{Binding StartButtonClick}">Start</Button>
-            <Button Command="{Binding NavigateToHighscoresViewButtonClick}">Wyniki</Button>
-            <Button Command="{Binding ExitButtonClick}">Wyjdź</Button>
+            <Button Command="{Binding NavigateToHighscoresViewButtonClick}">Scores</Button>
+            <Button Command="{Binding ExitButtonClick}">Exit</Button>
         </StackPanel>
     </Grid>
 </UserControl>

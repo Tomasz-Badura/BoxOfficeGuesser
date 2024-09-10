@@ -54,7 +54,7 @@ public class StartGameCommand : CommandBase
         {
             PromptWindowEventArgs promptResult = await PromptWindow.OpenPromptWindow(
                 Application.Current.MainWindow,
-                $"Wprowadź nazwę gracza {i}:",
+                $"Enter username for player {i + 1}:",
                 (x) => !string.IsNullOrEmpty(x) && !playerNames.Contains(x) && x.Length < 30, 
                 PromptValidatorType.Result);
 

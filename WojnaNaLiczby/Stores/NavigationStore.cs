@@ -18,6 +18,8 @@ public class NavigationStore
             {
                 WindowTarget.MinWidth = value.WindowOptions.minWidth;
                 WindowTarget.MinHeight = value.WindowOptions.minHeight;
+                WindowTarget.MaxWidth = value.WindowOptions.maxWidth;
+                WindowTarget.MaxHeight = value.WindowOptions.maxHeight;
                 WindowTarget.Width = value.WindowOptions.defaultWidth;
                 WindowTarget.Height = value.WindowOptions.defaultHeight;
                 WindowTarget.ResizeMode = value.WindowOptions.resizeMode;

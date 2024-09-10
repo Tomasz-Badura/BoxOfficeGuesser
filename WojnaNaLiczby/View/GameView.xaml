@@ -9,40 +9,71 @@
         d:DataContext="{d:DesignInstance Type=vms:GameViewModel}"
         d:DesignHeight="450" 
         d:DesignWidth="800">
-    <Grid> 
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="CornflowerBlue"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="Cursor" Value="ArrowCD"></Setter>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="WhiteSmoke"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Command="{Binding GreaterThanButtonClick}" Margin="0,0,10,0" FontSize="32"/>
-        <Button Command="{Binding LessThanButtonClick}" Margin="10,0,0,0" FontSize="32" Grid.Column="1"/>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="{Binding MovieLeftName}" HorizontalAlignment="Center" FontSize="32"/>
-            <TextBlock Text="{Binding MovieLeftYear}" HorizontalAlignment="Center" FontSize="32"/>
-            <TextBlock Text="{Binding MovieLeftIncome}" HorizontalAlignment="Center" FontSize="32"/>
-        </StackPanel>
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="{Binding MovieRightName}" HorizontalAlignment="Center" FontSize="32"/>
-            <TextBlock Text="{Binding MovieRightYear}" HorizontalAlignment="Center" FontSize="32"/>
-        </StackPanel>
+        <Grid Grid.Row="0" Height="auto" VerticalAlignment="Center" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Margin="10, 10, 0, 0">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Gracz:" FontSize="24"/>
+            <StackPanel Grid.Column="0" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Text="Player:" FontSize="24"/>
                 <TextBlock Text="{Binding CurrentPlayerName}" Margin="10,0,0,0" FontSize="24"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Życie:" FontSize="24"/>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Text="Lifes:" FontSize="24"/>
                 <TextBlock Text="{Binding CurrentPlayerLifes}" Margin="10,0,0,0" FontSize="24"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Punkty:" FontSize="24"/>
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Text="Score:" FontSize="24"/>
                 <TextBlock Text="{Binding CurrentPlayerPoints}" Margin="10,0,0,0" FontSize="24"/>
             </StackPanel>
 
-        </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="20,10,10,20">
+            <Button Grid.Row="1" Command="{Binding GreaterThanButtonClick}" FontSize="32">
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding MovieLeftName}" HorizontalAlignment="Center" FontSize="32"/>
+                    <TextBlock Text="{Binding MovieLeftYear}" HorizontalAlignment="Center" FontSize="32"/>
+                    <TextBlock Text="{Binding MovieLeftIncome}" HorizontalAlignment="Center" FontSize="32"/>
+                </StackPanel>
+            </Button>
+        </Border>
+
+        <Border Grid.Row="1" BorderThickness="1" Grid.Column="1" Margin="10,10,20,20" BorderBrush="Black">
+            <Button Grid.Row="1" Command="{Binding LessThanButtonClick}" FontSize="32" Grid.Column="1">
+                <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding MovieRightName}" HorizontalAlignment="Center" FontSize="32"/>
+                    <TextBlock Text="{Binding MovieRightYear}" HorizontalAlignment="Center" FontSize="32"/>
+                </StackPanel>
+            </Button>
+        </Border>
     </Grid>
 </UserControl>
