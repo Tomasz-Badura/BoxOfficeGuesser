@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="BoxOfficeGuesser.View.GameView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoxOfficeGuesser"
+        xmlns:vms="clr-namespace:BoxOfficeGuesser.ViewModel" 
+        mc:Ignorable="d" 
+        d:DataContext="{d:DesignInstance Type=vms:GameViewModel}"
+        d:DesignHeight="450" 
+        d:DesignWidth="800">
+    <Grid> 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Command="{Binding GreaterThanButtonClick}" Margin="0,0,10,0" FontSize="32"/>
+        <Button Command="{Binding LessThanButtonClick}" Margin="10,0,0,0" FontSize="32" Grid.Column="1"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="{Binding MovieLeftName}" HorizontalAlignment="Center" FontSize="32"/>
+            <TextBlock Text="{Binding MovieLeftYear}" HorizontalAlignment="Center" FontSize="32"/>
+            <TextBlock Text="{Binding MovieLeftIncome}" HorizontalAlignment="Center" FontSize="32"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="{Binding MovieRightName}" HorizontalAlignment="Center" FontSize="32"/>
+            <TextBlock Text="{Binding MovieRightYear}" HorizontalAlignment="Center" FontSize="32"/>
+        </StackPanel>
+
+        <StackPanel Margin="10, 10, 0, 0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Gracz:" FontSize="24"/>
+                <TextBlock Text="{Binding CurrentPlayerName}" Margin="10,0,0,0" FontSize="24"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Życie:" FontSize="24"/>
+                <TextBlock Text="{Binding CurrentPlayerLifes}" Margin="10,0,0,0" FontSize="24"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Punkty:" FontSize="24"/>
+                <TextBlock Text="{Binding CurrentPlayerPoints}" Margin="10,0,0,0" FontSize="24"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</UserControl>
