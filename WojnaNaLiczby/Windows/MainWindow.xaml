@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:BoxOfficeGuesser.View"
         xmlns:vms="clr-namespace:BoxOfficeGuesser.ViewModel"
         mc:Ignorable="d"
-        Title="Box Office Guesser" Height="220" Width="450">
+        Title="Box Office Guesser" WindowStartupLocation="CenterScreen" Height="220" Width="450">
     <Grid>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vms:GameCreationViewModel}">

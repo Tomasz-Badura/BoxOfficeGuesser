@@ -38,9 +38,11 @@ public partial class GameCreationViewModel : ViewModelBase
     public override WindowOptions WindowOptions { get; protected set; } = new()
     {
         minWidth = 400,
-        minHeight = 200,
+        minHeight = 230,
         defaultWidth = 400,
-        defaultHeight = 200,
+        defaultHeight = 230,
+        maxWidth = 400,
+        maxHeight = 230,
         resizeMode = System.Windows.ResizeMode.NoResize
     };
 
@@ -77,6 +79,7 @@ public partial class GameCreationViewModel : ViewModelBase
     }
 
     public NavigateCommand<HighscoresViewModel> NavigateToHighscoresViewButtonClick { get; }
+    public ShowTutorialCommand ShowTutorialButtonClick { get; } = new();
     public StartGameCommand StartButtonClick { get; }
     public ExitGameCommand ExitButtonClick { get; } = new();
 

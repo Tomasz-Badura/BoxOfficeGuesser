@@ -22,7 +22,7 @@ public class HighscoresViewModel : ViewModelBase
 
     public GameDifficultyDisplay GameDifficultyFilter
     {
-        get => gameDifficultyFilter; 
+        get => gameDifficultyFilter;
         set
         {
             gameDifficultyFilter = value;
@@ -30,16 +30,18 @@ public class HighscoresViewModel : ViewModelBase
         }
     }
 
-	public override WindowOptions WindowOptions { get; protected set; } = new()
-	{
-		minWidth = 700,
-		minHeight = 300,
-		defaultWidth = 700,
-		defaultHeight = 300,
-		resizeMode = System.Windows.ResizeMode.NoResize
-	};
+    public override WindowOptions WindowOptions { get; protected set; } = new()
+    {
+        minWidth = 700,
+        minHeight = 300,
+        maxHeight = int.MaxValue,
+        maxWidth = int.MaxValue,
+        defaultWidth = 700,
+        defaultHeight = 300,
+        resizeMode = System.Windows.ResizeMode.CanResizeWithGrip
+    };
 
-	public SwitchHighscoreViewCommand EasyScoresButtonClick { get; }
+    public SwitchHighscoreViewCommand EasyScoresButtonClick { get; }
     public SwitchHighscoreViewCommand MediumScoresButtonClick { get; }
     public SwitchHighscoreViewCommand HardScoresButtonClick { get; }
     public SwitchHighscoreViewCommand AllScoresButtonClick { get; }
