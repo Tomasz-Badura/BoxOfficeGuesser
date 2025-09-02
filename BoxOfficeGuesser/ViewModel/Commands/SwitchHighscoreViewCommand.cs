@@ -1,4 +1,6 @@
-﻿namespace BoxOfficeGuesser.ViewModel.Commands;
+﻿using BoxOfficeGuesser.Model;
+
+namespace BoxOfficeGuesser.ViewModel.Commands;
 public class SwitchHighscoreViewCommand : CommandBase
 {
     private readonly HighscoresViewModel highscoresViewModel;

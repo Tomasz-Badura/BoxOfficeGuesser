@@ -8,14 +8,6 @@ using BoxOfficeGuesser.ViewModel.Commands;
 
 namespace BoxOfficeGuesser.ViewModel;
 
-public enum GameDifficultyDisplay
-{
-    Easy,
-    Medium,
-    Hard,
-    All
-}
-
 public class HighscoresViewModel : ViewModelBase
 {
     public ICollectionView Scores => displayedScores.View;

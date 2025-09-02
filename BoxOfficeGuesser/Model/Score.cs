@@ -8,6 +8,7 @@ public class Score
     public string Username { get; set; } = default!;
     public int Points { get; set; }
     public int Difficulty { get; set; }
+
     public GameDifficulty GameDifficulty
     {
         get => (GameDifficulty) Difficulty;

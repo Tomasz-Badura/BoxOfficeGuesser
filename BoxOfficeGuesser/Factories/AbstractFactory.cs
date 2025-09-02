@@ -2,80 +2,21 @@
 
 public abstract class AbstractFactory<T>
 {
-    protected IServiceProvider provider;
+    protected readonly IServiceProvider provider;
 
-    /// <summary>
-    /// Validate 1 parameter
-    /// </summary>
-    /// <typeparam name="TValue1">Param1 type</typeparam>
-    /// <param name="parameters">parameters passed to the Create method</param>
-    /// <exception cref="ArgumentException">Thrown when parameters didn't validate correctly</exception>
-    protected void ThrowParams<TValue1>(params object[] parameters)
+    protected void ValidateParams(object[] parameters, params Type[] expectedTypes)
     {
-        if(parameters.Length != 1)
+        if(parameters.Length != expectedTypes.Length)
         {
-            throw new ArgumentException("Create takes in 1 parameter", nameof(parameters));
+            throw new ArgumentException($"Create takes {expectedTypes.Length} parameter(s).", nameof(parameters));
         }
 
-        if(parameters[0] is not TValue1)
+        for(int i = 0; i < parameters.Length; i++)
         {
-            throw new ArgumentException($"Parameter 0 is not of type {nameof(TValue1)}", nameof(parameters));
-        }
-    }
-
-    /// <summary>
-    /// Validate 2 parameters
-    /// </summary>
-    /// <typeparam name="TValue1">Param1 type</typeparam>
-    /// <typeparam name="TValue2">Param2 type</typeparam>
-    /// <param name="parameters">parameters passed to the Create method</param>
-    /// <exception cref="ArgumentException">Thrown when parameters didn't validate correctly</exception>
-    protected void ThrowParams<TValue1, TValue2>(params object[] parameters)
-    {
-        if(parameters.Length != 2)
-        {
-            throw new ArgumentException("Create takes in 2 parameters", nameof(parameters));
-        }
-
-        if(parameters[0] is not TValue1)
-        {
-            throw new ArgumentException($"Parameter 0 is not of type {nameof(TValue1)}", nameof(parameters));
-        }
-
-        if(parameters[1] is not TValue2)
-        {
-            throw new ArgumentException($"Parameter 0 is not of type {nameof(TValue2)}", nameof(parameters));
-        }
-    }
-
-    /// <summary>
-    /// Validate 3 parameters
-    /// </summary>
-    /// <typeparam name="TValue1">Param1 type</typeparam>
-    /// <typeparam name="TValue2">Param2 type</typeparam>
-    /// <typeparam name="TValue3">Param3 type</typeparam>
-    /// <param name="parameters">parameters passed to the Create method</param>
-    /// <exception cref="ArgumentException">Thrown when parameters didn't validate correctly</exception>
-    protected void ThrowParams<TValue1, TValue2, TValue3>(params object[] parameters)
-    {
-        if(parameters.Length != 3)
-        {
-            throw new ArgumentException("Create takes in 3 parameters", nameof(parameters));
-        }
-
-        if(parameters[0] is not TValue1)
-        {
-            throw new ArgumentException($"Parameter 0 is not of type {nameof(TValue1)}", nameof(parameters));
-        }
-
-        if(parameters[1] is not TValue2)
-        {
-            throw new ArgumentException($"Parameter 0 is not of type {nameof(TValue2)}", nameof(parameters));
-        }
-
-        if(parameters[2] is not TValue3)
-        {
-            throw new ArgumentException($"Parameter 0 is not of type {nameof(TValue3)}", nameof(parameters));
+            if(!expectedTypes[i].IsInstanceOfType(parameters[i]))
+            {
+                throw new ArgumentException($"Parameter {i} is not of type {expectedTypes[i].Name}.", nameof(parameters));
+            }
         }
     }
 

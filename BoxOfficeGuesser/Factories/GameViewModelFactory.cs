@@ -15,7 +15,7 @@ public class GameViewModelFactory : AbstractFactory<GameViewModel>
 
     public override GameViewModel Create(params object[] parameters)
     {
-        ThrowParams<Game, GameDifficulty>(parameters);
+        ValidateParams(parameters, typeof(Game), typeof(GameDifficulty));
 
         return new((Game) parameters[0], (GameDifficulty) parameters[1],
             provider.GetRequiredService<NavigationStore>(), 

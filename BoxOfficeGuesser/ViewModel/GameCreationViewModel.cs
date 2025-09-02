@@ -2,27 +2,15 @@
 using System.Windows.Data;
 
 using BoxOfficeGuesser.Factories;
+using BoxOfficeGuesser.Model;
 using BoxOfficeGuesser.Stores;
 using BoxOfficeGuesser.ViewModel.Commands;
 
 namespace BoxOfficeGuesser.ViewModel;
 
-public enum GameDifficulty
-{
-    Easy = 3,
-    Medium = 2,
-    Hard = 1
-}
-
-public enum GamePlayerCount
-{
-    One = 1,
-    Two = 2
-}
-
 public class ComparisonConverter : IValueConverter
 {
-    public object? Convert(object value, Type targetType,  object parameter, CultureInfo culture)
+    public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         return value?.Equals(parameter);
     }

@@ -16,7 +16,7 @@ public class StartGameCommandFactory : AbstractFactory<StartGameCommand>
 
     public override StartGameCommand Create(params object[] parameters)
     {
-        ThrowParams<GameCreationViewModel>(parameters);
+        ValidateParams(parameters, typeof(GameCreationViewModel));
 
         return new StartGameCommand(
             (GameCreationViewModel) parameters[0], 

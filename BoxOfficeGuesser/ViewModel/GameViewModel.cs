@@ -56,7 +56,7 @@ public class GameViewModel : ViewModelBase
         resizeMode = ResizeMode.CanResizeWithGrip
     };
 
-    private string SplitByWordWithNewLines(string input, int maxLength)
+    private static string SplitByWordWithNewLines(string input, int maxLength)
     {
         if(string.IsNullOrWhiteSpace(input) || maxLength <= 0)
         {
@@ -89,44 +89,44 @@ public class GameViewModel : ViewModelBase
 
     public void OnGuess()
     {
-        if(game.GameEnded == true)
+        if(game.GameEnded == false)
         {
-            Player[] players = game.GetPlayers();
-            StringBuilder sb = new();
-
-            int highestPoints = players.Max(p => p.points);
-            List<Player> winners = players.Where(p => p.points == highestPoints).ToList();
-
-            foreach(Player player in players)
-            {
-                string winnerStr = " ";
-                if(winners.Contains(player))
-                {
-                    winnerStr = " won and ";
-                    highscoresStore.InsertHighscore(new()
-                    {
-                        Date = DateTime.Now,
-                        Points = player.points,
-                        Username = player.username,
-                        GameDifficulty = gameDifficulty,
-                    });
-                }
-
-                _ = sb.AppendLine($"Player {player.username}{winnerStr}achieved: {player.points} point" + (player.points > 1 ? "s" : ""));
-            }
-
-            _ = MessageBox.Show(sb.ToString(), "Game has ended!", MessageBoxButton.OK, MessageBoxImage.Information);
-            navigationStore.NavigateTo<GameCreationViewModel>();
+            OnPropertyChanged(nameof(CurrentPlayerName));
+            OnPropertyChanged(nameof(CurrentPlayerLifes));
+            OnPropertyChanged(nameof(CurrentPlayerPoints));
+            OnPropertyChanged(nameof(MovieLeftName));
+            OnPropertyChanged(nameof(MovieLeftYear));
+            OnPropertyChanged(nameof(MovieLeftIncome));
+            OnPropertyChanged(nameof(MovieRightName));
+            OnPropertyChanged(nameof(MovieRightYear));
             return;
         }
 
-        OnPropertyChanged(nameof(CurrentPlayerName));
-        OnPropertyChanged(nameof(CurrentPlayerLifes));
-        OnPropertyChanged(nameof(CurrentPlayerPoints));
-        OnPropertyChanged(nameof(MovieLeftName));
-        OnPropertyChanged(nameof(MovieLeftYear));
-        OnPropertyChanged(nameof(MovieLeftIncome));
-        OnPropertyChanged(nameof(MovieRightName));
-        OnPropertyChanged(nameof(MovieRightYear));
+        Player[] players = game.GetPlayers();
+        StringBuilder sb = new();
+
+        int highestPoints = players.Max(p => p.points);
+        List<Player> winners = players.Where(p => p.points == highestPoints).ToList();
+
+        foreach(Player player in players)
+        {
+            string winnerStr = " ";
+            if(winners.Contains(player))
+            {
+                winnerStr = " won and ";
+                highscoresStore.InsertHighscore(new()
+                {
+                    Date = DateTime.Now,
+                    Points = player.points,
+                    Username = player.username,
+                    GameDifficulty = gameDifficulty,
+                });
+            }
+
+            _ = sb.AppendLine($"Player {player.username}{winnerStr}achieved: {player.points} point" + (player.points > 1 ? "s" : ""));
+        }
+
+        _ = MessageBox.Show(sb.ToString(), "Game has ended!", MessageBoxButton.OK, MessageBoxImage.Information);
+        navigationStore.NavigateTo<GameCreationViewModel>();
     }
 }

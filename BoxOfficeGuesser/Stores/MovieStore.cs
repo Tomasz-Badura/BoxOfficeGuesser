@@ -1,40 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.IO;
+
+using BoxOfficeGuesser.Model;
+
 using Microsoft.VisualBasic.FileIO;
 
 namespace BoxOfficeGuesser.Stores;
-
-public struct Movie
-{
-    public string name;
-    public int year;
-    public long boxOfficeIncome;
-
-    public static bool operator ==(Movie a, Movie b)
-    {
-        return a.name == b.name && a.year == b.year && a.boxOfficeIncome == b.boxOfficeIncome;
-    }
-
-    public static bool operator !=(Movie a, Movie b)
-    {
-        return a.name != b.name || a.year != b.year || a.boxOfficeIncome != b.boxOfficeIncome;
-    }
-
-    public override bool Equals([NotNullWhen(true)]object? obj)
-    {
-        if(obj is Movie other)
-        {
-            return this == other;
-        }
-
-        return false;
-    }
-
-    public override int GetHashCode()
-    {
-        return name.GetHashCode() ^ year.GetHashCode() ^ boxOfficeIncome.GetHashCode();
-    }
-}
 
 public class MovieStore
 {

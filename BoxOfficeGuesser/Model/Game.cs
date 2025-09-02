@@ -2,19 +2,6 @@
 
 namespace BoxOfficeGuesser.Model;
 
-public enum Guess
-{
-    GreaterThan,
-    LessThan
-}
-
-public struct Player
-{
-    public string username;
-    public int lifes;
-    public int points;
-}
-
 public class Game
 {
     public int CurrentPlayer { get; private set; }
